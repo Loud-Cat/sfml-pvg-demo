@@ -16,5 +16,6 @@ void drawCell(int, int, ColorID, std::vector<std::uint8_t>&);
 void drawRect(int, int, int, int, ColorID, std::vector<std::uint8_t>& pixels);
 void drawGrid(int, int, int, int, char[], std::vector<std::uint8_t>& pixels);
 
-bool saveGrid(unsigned int, unsigned int, char[], std::string);
+void drawImage(int, int, sf::Image&, std::vector<std::uint8_t>&);
+bool saveGrid(int, int, char[], std::string);
 

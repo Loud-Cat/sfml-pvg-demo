@@ -124,18 +124,38 @@ ColorID getColorID(sf::Color color)
   return ColorID::Black;
 }
 
+void drawImage(
+    int row, int col,
+    sf::Image& img, std::vector<std::uint8_t>& pixels
+){
+    auto [cols, rows] = img.getSize();
+    
+    for (int r = 0; r < rows; r++)
+    {
+        for (int c = 0; c < cols; c++)
+        {
+            auto x = static_cast<unsigned int>(c);
+            auto y = static_cast<unsigned int>(r);
+            ColorID color = getColorID( img.getPixel({x, y}) );
+            drawCell(row + r, col + c, color, pixels);
+        }
+    }
+}
+
 bool saveGrid(
-    unsigned int rows, unsigned int cols,
+    int rows, int cols,
     char grid[], std::string file
 ){
+    auto ur = static_cast<unsigned int>(rows);
+    auto uc = static_cast<unsigned int>(cols);
     auto path = static_cast<std::filesystem::path>(file);
     
-    sf::Image img({cols, rows});
+    sf::Image img({ur, uc});
     for (unsigned int r = 0; r < rows; r++)
     {
         for (unsigned int c = 0; c < cols; c++)
         {
-            ColorID color = static_cast<ColorID>( grid[cols*r+c] );
+            ColorID color = static_cast<ColorID>( grid[uc*r+c] );
             img.setPixel({c, r}, getColor(color));
         }
     }
