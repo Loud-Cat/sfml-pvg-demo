@@ -1,3 +1,9 @@
+# PVG Demo
+
+A simulation of the Parrot Video Graphics (PVG) chip using SFML
+
+![Screenshot](screenshot.png)
+
 # CMake SFML Project Template
 
 This repository template should allow for a fast and hassle-free kick start of your next SFML project using CMake.
