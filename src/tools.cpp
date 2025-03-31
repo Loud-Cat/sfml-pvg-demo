@@ -9,17 +9,14 @@ void drawScanline(
     int linewidth = SCREEN_WIDTH / COLUMNS;
     int lineheight = linewidth / 3;
 
-    int width = linewidth * COLUMNS;
-    int height = linewidth * ROWS;
-
     int y = (linewidth * row) + (lineheight * line);
     int x = linewidth * col;
-
+    
     for (int b = y; b < y + lineheight; b++)
     {
         for (int a = x; a < x + linewidth; a++)
         {
-	    int index = (width*b+a) * 4; // RGBA
+	    int index = (SCREEN_WIDTH*b+a) * 4; // RGBA
 	    if ( index + 3 < pixels.size() )
 	    {
 	        pixels[index + 0] = color.r;

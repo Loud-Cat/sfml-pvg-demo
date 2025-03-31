@@ -1,6 +1,5 @@
 #define ROWS      60
 #define COLUMNS   80
-#define SCANLINES 180
 
 #define SCREEN_WIDTH  960
 #define SCREEN_HEIGHT 720

@@ -4,22 +4,21 @@
 
 #define ROWS      60
 #define COLUMNS   80
-#define SCANLINES 180
 
 #define SCREEN_WIDTH  960
 #define SCREEN_HEIGHT 720
 
 int main()
 {
-    auto window = sf::RenderWindow(sf::VideoMode({960u, 720u}), "The PVG Chip Demo");
-    auto [width, height] = window.getSize();
+    unsigned int width = SCREEN_WIDTH;
+    unsigned int height = SCREEN_HEIGHT;
+    auto window = sf::RenderWindow(sf::VideoMode({width, height}), "The PVG Chip Demo");
     window.setFramerateLimit(144);
     
-    sf::Texture texture( sf::Vector2u(width, height) );
+    sf::Texture texture( window.getSize() );
     sf::Sprite sprite(texture);
     
-    auto [tw, th] = texture.getSize();
-    std::vector<std::uint8_t> pixels(tw * th * 4);
+    std::vector<std::uint8_t> pixels(width * height * 4);
     
     drawRect(10, 44, 5, 5, ColorID::White, pixels);
     drawRect(11, 45, 3, 3, ColorID::Black, pixels);
